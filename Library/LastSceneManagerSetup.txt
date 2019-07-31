@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/Pathfinding/ExampleScenes/[001]Astar_Pathfinding.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
