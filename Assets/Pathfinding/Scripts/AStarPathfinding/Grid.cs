@@ -8,6 +8,7 @@ namespace AStarPathfinding
 {
   public class Grid : MonoBehaviour
   {
+	public bool onlyDisplayPathGismos;
 	public Transform StartPosition;
 	public LayerMask WallMask;
 	public Vector2 GridWorldSize;
@@ -26,6 +27,14 @@ namespace AStarPathfinding
 	  gridSizeX = Mathf.RoundToInt(GridWorldSize.x / nodeDiameter);
 	  gridSizeY = Mathf.RoundToInt(GridWorldSize.y / nodeDiameter);
 	  CreateGrid();
+	}
+
+	public int MaxSize
+	{
+	  get
+	  {
+		return gridSizeX * gridSizeY;
+	  }
 	}
 
 	public Node NodeFromWorldPosition(Vector3 worldPosition)
@@ -118,28 +127,42 @@ namespace AStarPathfinding
 	{
 	  Gizmos.DrawWireCube(transform.position, new Vector3(GridWorldSize.x, 1, GridWorldSize.y));
 
-	  if (NodeArray != null)
+	  if (onlyDisplayPathGismos)
 	  {
-		foreach (Node node in NodeArray)
+		if (FinalPath != null)
 		{
-		  if (node.IsWall)
+		  foreach (Node node in FinalPath)
 		  {
-			Gizmos.color = Color.white;
+			Gizmos.color = Color.red;
+			Gizmos.DrawCube(node.Position, new Vector3(1, 0.25f, 1) * (nodeDiameter - DistanceBetweenNodes));
 		  }
-		  else
+		}
+	  }
+	  else
+	  {
+		if (NodeArray != null)
+		{
+		  foreach (Node node in NodeArray)
 		  {
-			Gizmos.color = Color.yellow;
-		  }
-
-		  if (FinalPath != null)
-		  {
-			if (FinalPath.Contains(node))
+			if (node.IsWall)
 			{
-			  Gizmos.color = Color.red;
+			  Gizmos.color = Color.white;
 			}
-		  }
+			else
+			{
+			  Gizmos.color = Color.yellow;
+			}
 
-		  Gizmos.DrawCube(node.Position, new Vector3(1, 0.25f, 1) * (nodeDiameter - DistanceBetweenNodes));
+			if (FinalPath != null)
+			{
+			  if (FinalPath.Contains(node))
+			  {
+				Gizmos.color = Color.red;
+			  }
+			}
+
+			Gizmos.DrawCube(node.Position, new Vector3(1, 0.25f, 1) * (nodeDiameter - DistanceBetweenNodes));
+		  }
 		}
 	  }
 	}
