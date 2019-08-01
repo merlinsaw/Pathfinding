@@ -43,8 +43,8 @@ namespace AStarPathfinding
 	  Node TargetNode = GridReference.NodeFromWorldPosition(targetPosition);
 
 	  //List<Node> Openset = new List<Node>();
-	  Heap<Node> OpenSet = new Heap<Node>(GridReference.MaxSize); //TODO: really understand the heap
-	  HashSet<Node> ClosedSet = new HashSet<Node>();//TODO: why is a hashset used here? maybe because we use ClosedList.Containes aftewards
+	  Heap<Node> OpenSet = new Heap<Node>(GridReference.MaxSize); //TODO: heap
+	  HashSet<Node> ClosedSet = new HashSet<Node>();//TODO: hashset 
 
 	  OpenSet.Add(StartNode);
 
@@ -82,7 +82,7 @@ namespace AStarPathfinding
 		  {
 			NeighborNode.GCost = MoveCost;
 			NeighborNode.HCost = GetManhattenDistance(NeighborNode, TargetNode);
-			NeighborNode.Parent = CurrentNode; // TODO: verstehe ich nicht ganz
+			NeighborNode.Parent = CurrentNode; // TODO: parent
 		  }
 
 		  if (!OpenSet.Contains(NeighborNode))
