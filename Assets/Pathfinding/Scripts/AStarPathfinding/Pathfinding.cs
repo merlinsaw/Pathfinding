@@ -7,6 +7,9 @@ using Common.Heap;
 
 namespace AStarPathfinding
 {
+/// <summary>
+/// 
+/// </summary>
   public class Pathfinding : MonoBehaviour
   {
 	Grid GridReference;

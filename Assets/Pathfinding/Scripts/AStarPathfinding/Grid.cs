@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace AStarPathfinding
 {
+  /// <summary>
+  /// 
+  /// </summary>
   public class Grid : MonoBehaviour
   {
 	public bool onlyDisplayPathGismos;

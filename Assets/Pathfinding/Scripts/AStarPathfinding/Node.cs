@@ -5,6 +5,9 @@ using Common.Heap;
 
 namespace AStarPathfinding
 {
+  /// <summary>
+  /// 
+  /// </summary>
   public class Node : IHeapItem<Node>
   {
 	public int GridX;

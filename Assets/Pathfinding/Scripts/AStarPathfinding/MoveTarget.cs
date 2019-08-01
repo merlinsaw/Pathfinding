@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace AStarPathfinding
 {
+  /// <summary>
+  /// 
+  /// </summary>
   public class MoveTarget : MonoBehaviour
   {
 	public LayerMask hitLayers;
